@@ -8,18 +8,12 @@
 
 import React from 'react';
 import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  Text,
-  useColorScheme,
-} from 'react-native';
+import {SafeAreaView, useColorScheme} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Provider} from 'react-redux';
 import Store from './store/Store';
-
+import {CountdownScreen} from './screens';
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -30,12 +24,7 @@ const App: () => Node = () => {
   return (
     <Provider store={Store}>
       <SafeAreaView style={backgroundStyle}>
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={backgroundStyle}>
-          <Text style={{color: '#000'}}> Hello Alex</Text>
-        </ScrollView>
+        <CountdownScreen />
       </SafeAreaView>
     </Provider>
   );
