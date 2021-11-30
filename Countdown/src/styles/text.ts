@@ -6,4 +6,7 @@ export default StyleSheet.create({
     color: colors.white,
     fontSize: 15,
   },
+  container: {
+    display: 'flex',
+  },
 });
