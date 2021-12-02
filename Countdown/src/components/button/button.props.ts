@@ -22,6 +22,11 @@ export interface ButtonProps extends TouchableOpacityProps {
   textStyle?: StyleProp<TextStyle>;
 
   /**
+   * An optional style override useful for the button style.
+   */
+  buttonStyle?: StyleProp<ViewStyle>;
+
+  /**
    * One of the different types of text presets.
    */
   children?: React.ReactNode;

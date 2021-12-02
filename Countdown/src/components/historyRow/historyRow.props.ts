@@ -1,5 +1,5 @@
 import {ViewProps} from 'react-native';
 
-export interface HistoryTableProps extends ViewProps {
+export interface HistoryRowProps extends ViewProps {
   newColor?: string;
 }

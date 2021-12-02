@@ -8,22 +8,14 @@
 
 import React from 'react';
 import type {Node} from 'react';
-import {SafeAreaView, useColorScheme} from 'react-native';
-
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {SafeAreaView} from 'react-native';
 import {Provider} from 'react-redux';
 import Store from './store/Store';
 import {CountdownScreen} from './screens';
 const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
     <Provider store={Store}>
-      <SafeAreaView style={backgroundStyle}>
+      <SafeAreaView style={{flex: 1}}>
         <CountdownScreen />
       </SafeAreaView>
     </Provider>

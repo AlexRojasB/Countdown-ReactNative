@@ -1,12 +1,15 @@
 import {StyleSheet} from 'react-native';
 import colors from './colors';
 
-export default StyleSheet.create({
+export const myTextStyles = StyleSheet.create({
   normalText: {
     color: colors.white,
-    fontSize: 15,
+    fontSize: 16,
   },
-  container: {
-    display: 'flex',
+  ButtonTextStyle: {
+    color: colors.white,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 20,
   },
 });

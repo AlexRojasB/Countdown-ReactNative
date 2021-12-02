@@ -1,26 +1,43 @@
 import * as React from 'react';
 import {ScrollView, Text, View} from 'react-native';
-import {BackgroundFluid, Button} from '../../components/';
+import {BackgroundFluid, Button, HistoryTable} from '../../components/';
+import {myTextStyles} from '../../styles/text';
 import {CountdownProps} from './countdown.props';
 
+//TODO: This will be two components
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function CountdownScreen(props: CountdownProps) {
+  const [seconds, setSeconds] = React.useState(0);
+  const interval = React.useRef(null);
+
+  const stopTime = () => {
+    clearInterval(interval.current);
+  };
+
+  const startCounter = () => {
+    interval.current = setInterval(() => {
+      setSeconds(prevState => prevState + 1);
+    }, 1000);
+  };
+
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={{flex: 1}}>
       <BackgroundFluid>
-        <Text style={{color: '#fff'}}>00:00:010</Text>
-        <View>
-          <Button text="START" />
-          <Button text="SET TIME" />
+        <View style={{flex: 1, justifyContent: 'center'}}>
+          <Text
+            style={[
+              myTextStyles.normalText,
+              {fontSize: 80, textAlign: 'center'},
+            ]}>
+            00:00:0{seconds}
+          </Text>
         </View>
-        <View>
-          <View>
-            <Text>MOST RECENT TIMERS</Text>
-            <Button text="CLEAR" />
+        <View style={{flex: 1}}>
+          <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+            <Button text="START" onPress={() => stopTime()} />
+            <Button text="SET TIME" onPress={() => startCounter()} />
           </View>
-          <Text>The timer for 15/10/2021 04:23pm was            00:23:76</Text>
-          <Text>The timer for 15/10/2021 04:23pm was            00:23:76</Text>
-          <Text>The timer for 15/10/2021 04:23pm was            00:23:76</Text>
-          <Text>The timer for 15/10/2021 04:23pm was            00:23:76</Text>
+          <HistoryTable />
         </View>
       </BackgroundFluid>
     </ScrollView>
