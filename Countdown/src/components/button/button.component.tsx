@@ -5,7 +5,7 @@ import {myTextStyles} from '../../styles/text';
 import {ButtonProps} from './button.props';
 
 export function Button(props: ButtonProps) {
-  const {text, textStyle, ...rest} = props;
+  const {children, textStyle, ...rest} = props;
 
   return (
     <TouchableOpacity {...rest}>
@@ -15,7 +15,7 @@ export function Button(props: ButtonProps) {
           myContainersStyle.ButtonContainer,
           textStyle,
         ]}>
-        {text}
+        {children}
       </Text>
     </TouchableOpacity>
   );

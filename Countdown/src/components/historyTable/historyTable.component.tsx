@@ -23,9 +23,9 @@ export function HistoryTable(props: HistoryTableProps) {
             fontSize: 16,
             paddingHorizontal: 20,
             paddingVertical: 5,
-          }}
-          text="CLEAR"
-        />
+          }}>
+          CLEAR
+        </Button>
       </View>
       <ScrollView style={{margin: 20}}>
         <HistoryRow />
