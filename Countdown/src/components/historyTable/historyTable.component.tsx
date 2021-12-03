@@ -33,10 +33,7 @@ const HistoryTable = (props: HistoryTableProps) => {
   };
 
   const clearHistory = () => {
-    console.log('clear');
-    console.log('pato', saveTime);
     dispatch(ClearHistoryTimers());
-    console.log('perro', saveTime);
   };
 
   return (

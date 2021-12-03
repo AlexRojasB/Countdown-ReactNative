@@ -1,5 +1,6 @@
 export enum Events {
   UPDATELIST = 'UPDATE_LIST',
+  STARTTIMER = 'START_TIMER',
   // use an enum to keep track of events similar to action types set as variables in redux
 }
 export const eventEmitter = {

@@ -26,6 +26,7 @@ export function CountdownScreen(props: CountdownProps) {
 
   const startCounter = () => {
     if (!isTimerRunning) {
+      eventEmitter.dispatch(Events.STARTTIMER, '');
       setIsTimerRunning(true);
       interval.current = setInterval(() => {
         timeInSeconds++;
