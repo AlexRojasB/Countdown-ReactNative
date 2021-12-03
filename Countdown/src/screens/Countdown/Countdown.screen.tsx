@@ -1,7 +1,11 @@
 import * as React from 'react';
 import {ScrollView, Text, View} from 'react-native';
-import {BackgroundFluid, Button, HistoryTable} from '../../components/';
+import {useDispatch} from 'react-redux';
+import {BackgroundFluid, Button} from '../../components/';
+import HistoryTable from '../../components/historyTable/historyTable.component';
+import {CountdownFinished} from '../../store/actions/CountdownActions';
 import {myTextStyles} from '../../styles/text';
+import {eventEmitter, Events} from '../../utils';
 import {CountdownProps} from './countdown.props';
 
 //TODO: This will be two components
@@ -11,15 +15,16 @@ export function CountdownScreen(props: CountdownProps) {
   const [isTimerRunning, setIsTimerRunning] = React.useState(false);
   const interval = React.useRef(null);
   var timeInSeconds = 0;
-  var currentTimer = '00:00:00';
+  const dispatch = useDispatch();
 
   const stopTime = () => {
     setIsTimerRunning(false);
     clearInterval(interval.current);
+    dispatch(CountdownFinished(counter));
+    eventEmitter.dispatch(Events.UPDATELIST, '');
   };
 
   const startCounter = () => {
-    console.log(isTimerRunning);
     if (!isTimerRunning) {
       setIsTimerRunning(true);
       interval.current = setInterval(() => {
@@ -43,12 +48,11 @@ export function CountdownScreen(props: CountdownProps) {
       const hourString = ('0' + hours).slice(-2);
       const minuteString = ('0' + minutes).slice(-2);
       const secString = ('0' + modSec).slice(-2);
-      currentTimer = hourString + ':' + minuteString + ':' + secString;
+      return hourString + ':' + minuteString + ':' + secString;
     } else {
       const secString = ('0' + sec).slice(-2);
-      currentTimer = '00:00:' + secString;
+      return '00:00:' + secString;
     }
-    return currentTimer;
   };
 
   return (

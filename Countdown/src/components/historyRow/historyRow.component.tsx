@@ -1,11 +1,10 @@
 import React from 'react';
-import {ScrollView, View, Text} from 'react-native';
+import {View, Text} from 'react-native';
 import {myTextStyles} from '../../styles/text';
-import {Button} from '../';
 import {HistoryRowProps} from './historyRow.props';
 
 export function HistoryRow(props: HistoryRowProps) {
-  const {children} = props;
+  const {wasString, whenString} = props;
   return (
     <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
       <Text
@@ -13,14 +12,14 @@ export function HistoryRow(props: HistoryRowProps) {
           myTextStyles.normalText,
           {textAlignVertical: 'center', fontSize: 14},
         ]}>
-        The timer for 15/10/2021 04:23pm was
+        The timer for {whenString} was
       </Text>
       <Text
         style={[
           myTextStyles.normalText,
           {textAlignVertical: 'center', fontSize: 14},
         ]}>
-        00:23:76
+        {wasString}
       </Text>
     </View>
   );
